@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    <!-- 注解扫描包 -->
+    <context:component-scan base-package="org.zzc"/>
+    <!-- 开启注解 -->
+    <mvc:annotation-driven/>
+    <!-- 配置视图解析器 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
+        <!-- 前缀 -->
+        <property name="prefix" value="/view/"/>
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- 配置json解析器 -->
+    <bean id="defaultJsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+
+    <!-- 拦截器,多个拦截器,顺序执行 -->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/*/*"/>-->
+            <!--<bean class="com.bdetb.base.controller.CheckOptInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+    <!-- 文件上传表单的视图解析器 -->
+    <!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> <property
+        name="defaultEncoding" value="utf-8" /> <property name="maxUploadSize" value="10485760000" /> <property name="maxInMemorySize"
+        value="40960" /> </bean> -->
+</beans>
