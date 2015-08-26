@@ -61,8 +61,10 @@
         <!-- 用于批处理操作 -->
         <property name="sessionTemplate" ref="sqlSessionTemplate"></property>
     </bean>
+
+    <import resource="spring-user.xml" />
     <!--================== 事务管理 ===================== -->
-    <bean id="transactionManager"
+    <!--<bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
@@ -84,7 +86,7 @@
         <aop:pointcut id="manageMethod"
                       expression="execution(* org.zzc.*.*.model.service.*.*(..))"/>
         <aop:advisor advice-ref="myTransaction" pointcut-ref="manageMethod"/>
-    </aop:config>
+    </aop:config>-->
 
     <!-- log4jdbc可以将数据源执行的sql将占位符?替换成字符,并以日志打印出来. -->
     <!--<bean id="log4jdbcInterceptor" class="net.sf.log4jdbc.DataSourceSpyInterceptor" />-->

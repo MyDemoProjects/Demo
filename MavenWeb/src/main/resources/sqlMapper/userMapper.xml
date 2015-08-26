@@ -7,15 +7,14 @@
 	<!-- 查询记录总行数 -->
 	<select id="getRecordListCount" parameterType="org.zzc.user.entity.User"
 		resultType="int">
-		<![CDATA[ select count(*) from userInfo ]]>
+		<![CDATA[ select count(*) from user ]]>
 	</select>
 	<!-- 根据id得到记录 -->
 	<select id="getRecordById" parameterType="org.zzc.user.entity.User"
 		resultType="org.zzc.user.entity.User">
-		<![CDATA[ select * from userInfo]]>
+		<![CDATA[ select * from user]]>
 		<where>
 			<if test="id != null"><![CDATA[ and id =#{id} ]]></if>
-			<if test="openId != null"><![CDATA[ and openId =#{openId} ]]></if>
 		</where>
 	</select>
 	<!-- 得到记录列表 -->

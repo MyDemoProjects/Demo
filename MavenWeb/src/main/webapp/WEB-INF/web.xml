@@ -74,7 +74,7 @@
     </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:conf/*.xml</param-value>
+        <param-value>classpath:conf/spring-base.xml</param-value>
     </context-param>
 
     <!-- ==================== utf-8编码处理===================== -->
