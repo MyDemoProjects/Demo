@@ -12,23 +12,44 @@ import java.util.List;
  */
 public class UserDao extends BaseDao<User> implements IUserDao {
 
+    /**
+     * get Record
+     * @param entity query conditions
+     * @return resultSet
+     */
     public User getRecordById(User entity) {
-        return null;
+        return this.getEntityById(entity);
     }
 
+    /**
+     * @param entity query conditions
+     * @return result list
+     */
     public List<User> getRecordList(User entity) {
-        return null;
+        return this.getEntityList(entity);
     }
 
+    /**
+     * @param entity add information
+     * @return information(include affect the number of rows)
+     */
     public User addRecord(User entity) {
-        return null;
+        return this.addEntity(entity);
     }
 
+    /**
+     * @param entity modify information
+     * @return information(include affect the number of rows)
+     */
     public User updateRecord(User entity) {
-        return null;
+        return this.updateEntity(entity);
     }
 
+    /**
+     * @param entity query conditions
+     * @return information(include affect the number of rows)
+     */
     public User deleteRecord(User entity) {
-        return null;
+        return this.deleteEntity(entity);
     }
 }
