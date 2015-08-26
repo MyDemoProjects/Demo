@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
@@ -11,94 +12,93 @@
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-       <!-- 测试服url: jdbc:mysql://121.40.31.139:3306/pododb?characterEncoding=UTF-8 -->
-       <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
-             destroy-method="close">
-              <property name="url"
-                        value="jdbc:mysql://121.40.31.139:3306/ysq_mysql?characterEncoding=UTF-8" />
-              <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-              <property name="username" value="root" />
-              <property name="password" value="123456" />
-           !-- 配置初始化大小、最小、最大 -->
-           <property name="initialSize" value="1" />
-           <property name="minIdle" value="1" />
-           <property name="maxActive" value="20" />
+    <!-- 测试服url: jdbc:mysql://121.40.31.139:3306/pododb?characterEncoding=UTF-8 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url" value="jdbc:mysql://121.40.31.139:3306/ysq_mysql?characterEncoding=UTF-8"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
 
-           <!-- 配置获取连接等待超时的时间 -->
-           <property name="maxWait" value="60000" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
 
-           <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-           <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
 
-           <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-           <property name="minEvictableIdleTimeMillis" value="300000" />
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
 
-           <property name="validationQuery" value="SELECT 'x'" />
-           <property name="testWhileIdle" value="true" />
-           <property name="testOnBorrow" value="false" />
-           <property name="testOnReturn" value="false" />
+        <property name="validationQuery" value="SELECT 'x'"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
 
-           <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-           <property name="poolPreparedStatements" value="true" />
-           <property name="maxPoolPreparedStatementPerConnectionSize" value="100" />
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="100"/>
 
-           <!-- 配置监控统计拦截的filters -->
-           <property name="filters" value="stat" />
-       </bean>
+        <!-- 配置监控统计拦截的filters -->
+        <property name="filters" value="stat"/>
+    </bean>
 
-       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-              <property name="dataSource" ref="dataSource" />
-              <property name="configLocation" value="classpath:sqlMapperConf.xml" />
-              <property name="mapperLocations" value="classpath:sqlMapper/*.xml" />
-       </bean>
-       <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
-             scope="prototype">
-              <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
-       </bean>
-       <bean id="baseDaoSupport" class="org.zzc.base.model.dao.BaseDaoSupport">
-              <!-- 用于非批处理操作 -->
-              <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
-              <!-- 用于批处理操作 -->
-              <property name="sessionTemplate" ref="sqlSessionTemplate"></property>
-       </bean>
-       <!--================== 事务管理 ===================== -->
-       <bean id="transactionManager"
-             class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-              <property name="dataSource" ref="dataSource"></property>
-       </bean>
-       <tx:advice id="myTransaction" transaction-manager="transactionManager">
-              <tx:attributes>
-                     <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
-                     <tx:method name="update*" propagation="REQUIRED"
-                                rollback-for="Exception" />
-                     <tx:method name="delete*" propagation="REQUIRED"
-                                rollback-for="Exception" />
-                     <tx:method name="insert*" propagation="REQUIRED"
-                                rollback-for="Exception" />
-                     <tx:method name="save*" propagation="REQUIRED"
-                                rollback-for="Exception" />
-                     <tx:method name="*" read-only="true" />
-              </tx:attributes>
-       </tx:advice>
-       <aop:config>
-              <aop:pointcut id="manageMethod"
-                            expression="execution(* org.zzc.*.*.model.service.*.*(..))" />
-              <aop:advisor advice-ref="myTransaction" pointcut-ref="manageMethod" />
-       </aop:config>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:sqlMapperConf.xml"/>
+        <property name="mapperLocations" value="classpath:sqlMapper/*.xml"/>
+    </bean>
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+          scope="prototype">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    <bean id="baseDaoSupport" class="org.zzc.base.model.dao.BaseDaoSupport">
+        <!-- 用于非批处理操作 -->
+        <property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+        <!-- 用于批处理操作 -->
+        <property name="sessionTemplate" ref="sqlSessionTemplate"></property>
+    </bean>
+    <!--================== 事务管理 ===================== -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <tx:advice id="myTransaction" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED"
+                       rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED"
+                       rollback-for="Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED"
+                       rollback-for="Exception"/>
+            <tx:method name="save*" propagation="REQUIRED"
+                       rollback-for="Exception"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="manageMethod"
+                      expression="execution(* org.zzc.*.*.model.service.*.*(..))"/>
+        <aop:advisor advice-ref="myTransaction" pointcut-ref="manageMethod"/>
+    </aop:config>
 
-       <!-- log4jdbc可以将数据源执行的sql将占位符?替换成字符,并以日志打印出来. -->
-       <!--<bean id="log4jdbcInterceptor" class="net.sf.log4jdbc.DataSourceSpyInterceptor" />-->
-       <!--<bean id="dataSourceLog4jdbcAutoProxyCreator"-->
-             <!--class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
-              <!--<property name="interceptorNames">-->
-                     <!--<list>-->
-                            <!--<value>log4jdbcInterceptor</value>-->
-                     <!--</list>-->
-              <!--</property>-->
-              <!--<property name="beanNames">-->
-                     <!--<list>-->
-                            <!--<value>dataSource</value>-->
-                     <!--</list>-->
-              <!--</property>-->
-       <!--</bean>-->
+    <!-- log4jdbc可以将数据源执行的sql将占位符?替换成字符,并以日志打印出来. -->
+    <!--<bean id="log4jdbcInterceptor" class="net.sf.log4jdbc.DataSourceSpyInterceptor" />-->
+    <!--<bean id="dataSourceLog4jdbcAutoProxyCreator"-->
+    <!--class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
+    <!--<property name="interceptorNames">-->
+    <!--<list>-->
+    <!--<value>log4jdbcInterceptor</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--<property name="beanNames">-->
+    <!--<list>-->
+    <!--<value>dataSource</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
 </beans>

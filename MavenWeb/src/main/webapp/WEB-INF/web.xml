@@ -14,22 +14,32 @@
     <!--</jsp-config>-->
 
     <!-- ====================session时长===================== -->
-    <session-config>
+    <!--<session-config>
         <session-timeout>60</session-timeout>
-    </session-config>
+    </session-config>-->
 
     <!-- ====================log4j（必须放在spring前面）===================== -->
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
     <context-param>
         <param-name>log4jConfigLocation</param-name>
-        <param-value>classpath:log4j.properties</param-value>
+        <param-value>classpath:log4j.xml</param-value>
     </context-param>
-    <context-param>
-        <param-name>webAppRootKey</param-name>
-        <param-value>MavenWeb</param-value>
-    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.util.Log4jConfigListener
+        </listener-class>
+    </listener>
+    <!-- <listener>
+         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+     </listener>
+     <context-param>
+         <param-name>log4jConfigLocation</param-name>
+         <param-value>classpath:log4j.properties</param-value>
+     </context-param>
+     <context-param>
+         <param-name>webAppRootKey</param-name>
+         <param-value>MavenWeb</param-value>
+     </context-param>-->
 
     <!-- ==================== 静态资源访问===================== -->
     <servlet-mapping>
@@ -87,6 +97,6 @@
 
     <!-- ==================== 欢迎页面===================== -->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>demo.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

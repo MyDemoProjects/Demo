@@ -1,5 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<head>
+    <title>index</title>
+</head>
 <body>
-<h2>Hello World!This is my first Maven Project!</h2>
+<h1>Hello World !!!</h1>
 </body>
 </html>
