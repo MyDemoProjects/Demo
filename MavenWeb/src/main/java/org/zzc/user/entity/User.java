@@ -1,25 +1,39 @@
 package org.zzc.user.entity;
 
+import org.zzc.base.model.entity.BaseEntity;
+
 /**
- * 用户信息
- * Created by Administrator on 2015/8/26 0026.
+ * 鐢ㄦ埛淇℃伅
  */
-public class User {
-    /** primary key */
-    private Long id;
-    /** name */
+public class User extends BaseEntity {
+    private Integer id;
+
+    private String code;
+
     private String name;
-    /** age */
+
+    private String password;
+
     private Integer age;
-    /** sex */
+
     private String sex;
 
-    public Long getId() {
+    private String remark;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code == null ? null : code.trim();
     }
 
     public String getName() {
@@ -27,7 +41,15 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getAge() {
@@ -43,6 +65,14 @@ public class User {
     }
 
     public void setSex(String sex) {
-        this.sex = sex;
+        this.sex = sex == null ? null : sex.trim();
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 }

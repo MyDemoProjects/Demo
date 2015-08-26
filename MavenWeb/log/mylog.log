@@ -1,0 +1,24 @@
+2015-08-26 12:39:26,307 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring-context.xml]
+2015-08-26 12:39:26,458 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from file [C:\Users\Administrator\MyGit\MavenWeb\target\classes\conf\spring-base.xml]
+2015-08-26 12:39:26,534 INFO  [org.springframework.context.support.GenericApplicationContext] Refreshing org.springframework.context.support.GenericApplicationContext@402f32ff: startup date [Wed Aug 26 12:39:26 CST 2015]; root of context hierarchy
+2015-08-26 12:39:26,986 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Mapped "{[/user/userInfo],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String org.zzc.user.controller.UserController.gotoUserPage(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2015-08-26 12:39:27,612 INFO  [com.alibaba.druid.pool.DruidDataSource] {dataSource-1} inited
+2015-08-26 12:39:27,769 INFO  [org.test.TestLog] 这是一个测试
+2015-08-26 12:39:27,771 INFO  [org.springframework.context.support.GenericApplicationContext] Closing org.springframework.context.support.GenericApplicationContext@402f32ff: startup date [Wed Aug 26 12:39:26 CST 2015]; root of context hierarchy
+2015-08-26 12:39:27,775 INFO  [com.alibaba.druid.pool.DruidDataSource] {dataSource-1} closed
+2015-08-26 12:40:16,936 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring-context.xml]
+2015-08-26 12:40:17,090 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from file [C:\Users\Administrator\MyGit\MavenWeb\target\classes\conf\spring-base.xml]
+2015-08-26 12:40:17,167 INFO  [org.springframework.context.support.GenericApplicationContext] Refreshing org.springframework.context.support.GenericApplicationContext@402f32ff: startup date [Wed Aug 26 12:40:17 CST 2015]; root of context hierarchy
+2015-08-26 12:40:17,719 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Mapped "{[/user/userInfo],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String org.zzc.user.controller.UserController.gotoUserPage(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2015-08-26 12:40:18,402 INFO  [com.alibaba.druid.pool.DruidDataSource] {dataSource-1} inited
+2015-08-26 12:40:18,575 INFO  [org.test.TestLog] 这是一个测试
+2015-08-26 12:40:18,577 INFO  [org.springframework.context.support.GenericApplicationContext] Closing org.springframework.context.support.GenericApplicationContext@402f32ff: startup date [Wed Aug 26 12:40:17 CST 2015]; root of context hierarchy
+2015-08-26 12:40:18,580 INFO  [com.alibaba.druid.pool.DruidDataSource] {dataSource-1} closed
+2015-08-26 12:41:20,428 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from class path resource [spring-context.xml]
+2015-08-26 12:41:20,583 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] Loading XML bean definitions from file [C:\Users\Administrator\MyGit\MavenWeb\target\classes\conf\spring-base.xml]
+2015-08-26 12:41:20,673 INFO  [org.springframework.context.support.GenericApplicationContext] Refreshing org.springframework.context.support.GenericApplicationContext@402f32ff: startup date [Wed Aug 26 12:41:20 CST 2015]; root of context hierarchy
+2015-08-26 12:41:21,156 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Mapped "{[/user/userInfo],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String org.zzc.user.controller.UserController.gotoUserPage(org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2015-08-26 12:41:21,800 INFO  [com.alibaba.druid.pool.DruidDataSource] {dataSource-1} inited
+2015-08-26 12:41:21,978 INFO  [org.test.TestLog] 这是一个测试
+2015-08-26 12:41:21,981 INFO  [org.springframework.context.support.GenericApplicationContext] Closing org.springframework.context.support.GenericApplicationContext@402f32ff: startup date [Wed Aug 26 12:41:20 CST 2015]; root of context hierarchy
+2015-08-26 12:41:21,984 INFO  [com.alibaba.druid.pool.DruidDataSource] {dataSource-1} closed
