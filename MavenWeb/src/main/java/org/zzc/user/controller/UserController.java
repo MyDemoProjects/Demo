@@ -24,6 +24,7 @@ public class UserController {
 
     @RequestMapping("/userInfo")
     public String gotoUserPage(ModelMap modelMap, User user, HttpServletRequest request, HttpServletResponse response) {
+        user.setId(1);
         user = userService.getRecordById(user);
         logger.info(user);
         return "user/user_info";
