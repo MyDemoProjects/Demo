@@ -76,7 +76,13 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:conf/spring-base.xml</param-value>
     </context-param>
-
+    <!-- ==================== 静态资源访问===================== -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/js/*</url-pattern>
+        <url-pattern>/css/*</url-pattern>
+        <url-pattern>/img/*</url-pattern>
+    </servlet-mapping>
     <!-- ==================== utf-8编码处理===================== -->
     <filter>
         <filter-name>encodingFilter</filter-name>
