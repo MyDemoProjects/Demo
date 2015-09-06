@@ -32,6 +32,7 @@
             width: 90%;
             margin: 0px auto;
             margin-top: 20px;
+            padding: 5px;
             height: 250px;
             border: 1px solid #ccc;
             overflow-y: scroll;
@@ -130,7 +131,9 @@
 <body>
 <div id="container" class="container">
     <h2 style="margin-top: 40px; text-align: center;">智能聊天机器人</h2>
-
+    <div style="margin: 0 auto;text-align: center;">
+        <input type="range" max="2" min="0" step="1" value="0" style="width: 100%;border: none;">
+    </div>
     <div id="result" class="msgWindow">
     </div>
     <div style="width: 90%;margin: 0px auto;text-align: right;margin-top: 1px;">

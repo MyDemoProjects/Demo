@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link type="text/css" rel="stylesheet" href="${basePath}js/jquery.nstSlider.css">
     <script src="${basePath}js/jquery-2.1.4.js"></script>
-    <script src="${basePath}js/"
-    <script src="${basePath}js/jquery.netSlider.min.js"></script>
+    <script src="${basePath}js/jquery.nstSlider.js"></script>
+    <%--<script src="${basePath}js/jquery.netSlider.min.js"></script>--%>
     <style>
         body {
             min-width: 300px;
