@@ -52,7 +52,6 @@ public class BaseDaoSupport extends SqlSessionDaoSupport {
      * @param entity bean
      * @return bean
      */
-    @SuppressWarnings("unused")
     public <E> E getEntityById(String mapperId, E entity) {
         return this.getSqlSession().selectOne(getFullMapperId(mapperId, entity), entity);
     }
@@ -64,7 +63,6 @@ public class BaseDaoSupport extends SqlSessionDaoSupport {
      * @param entity bean
      * @return list<bean>
      */
-    @SuppressWarnings("unused")
     public <E> List<E> getEntityList(String mapperId, E entity) {
         return this.getSqlSession().selectList(getFullMapperId(mapperId, entity), entity);
     }
@@ -76,7 +74,6 @@ public class BaseDaoSupport extends SqlSessionDaoSupport {
      * @param entity bean
      * @return 影响的行数
      */
-    @SuppressWarnings("unused")
     public <E> int addEntity(String mapperId, E entity) {
         return this.getSqlSession().insert(getFullMapperId(mapperId, entity), entity);
     }
@@ -88,7 +85,6 @@ public class BaseDaoSupport extends SqlSessionDaoSupport {
      * @param entityList list<bean>
      * @return 影响的行数
      */
-    @SuppressWarnings("unused")
     public <E> int addEntity(String mapperId, List<E> entityList) {
         SqlSession session = this.sessionTemplate.getSqlSessionFactory().openSession(ExecutorType.BATCH);
         String fullMapperId = null;
@@ -117,7 +113,6 @@ public class BaseDaoSupport extends SqlSessionDaoSupport {
      * @param entity bean
      * @return 影响的行数
      */
-    @SuppressWarnings("unused")
     public <E> int updateEntity(String mapperId, E entity) {
         return this.getSqlSession().update(getFullMapperId(mapperId, entity), entity);
     }
@@ -129,7 +124,6 @@ public class BaseDaoSupport extends SqlSessionDaoSupport {
      * @param entityList list bean
      * @return 影响的行数
      */
-    @SuppressWarnings("unused")
     public <E> int updateEntity(String mapperId, List<E> entityList) {
         SqlSession session = this.sessionTemplate.getSqlSessionFactory().openSession(ExecutorType.BATCH);
         String fullMapperId = null;
@@ -158,7 +152,6 @@ public class BaseDaoSupport extends SqlSessionDaoSupport {
      * @param entity bean
      * @return 影响的行数
      */
-    @SuppressWarnings("unused")
     public <E> int deleteEntity(String mapperId, E entity) {
         return this.getSqlSession().delete(getFullMapperId(mapperId, entity), entity);
     }

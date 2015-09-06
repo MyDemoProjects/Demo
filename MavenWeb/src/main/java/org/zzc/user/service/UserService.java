@@ -1,12 +1,11 @@
 package org.zzc.user.service;
 
+import java.util.List;
+
 import org.zzc.base.model.service.BaseService;
 import org.zzc.user.dao.idao.IUserDao;
 import org.zzc.user.entity.User;
 import org.zzc.user.service.iservice.IUserService;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * user service implements class

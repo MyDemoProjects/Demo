@@ -1,6 +1,5 @@
 package org.zzc.user.dao.idao;
 
-import org.zzc.base.model.dao.BaseDao;
 import org.zzc.base.model.dao.idao.IBaseDao;
 import org.zzc.user.entity.User;
 

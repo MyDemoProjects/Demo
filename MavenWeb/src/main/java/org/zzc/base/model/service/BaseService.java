@@ -2,7 +2,6 @@ package org.zzc.base.model.service;
 
 import org.apache.log4j.Logger;
 import org.zzc.base.model.entity.BaseEntity;
-import org.zzc.base.model.service.iservice.IBaseService;
 
 /**
  * base service  implements class

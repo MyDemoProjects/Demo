@@ -1,7 +1,5 @@
 package org.zzc.chat.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.sun.deploy.net.HttpResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,9 +23,9 @@ import java.net.URLEncoder;
 public class TulingChat {
     private static Logger logger = Logger.getLogger(TulingChat.class);
     private static String KEY = "0d79b2ddcc992ae679e0661f4898ff2e";
-    private static String INFO = "ÄãºÃ";
-    /** µ÷ÓÃÍ¼Áé»úÆ÷ÈËÆ½Ì¨½Ó¿Ú
-     *   ÐèÒªµ¼ÈëµÄ°ü£ºcommons-logging-1.0.4.jar¡¢ httpclient-4.3.1.jar¡¢httpcore-4.3.jar
+    private static String INFO = "ä½ å¥½";
+    /** ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½Ì¨ï¿½Ó¿ï¿½
+     *   ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½commons-logging-1.0.4.jarï¿½ï¿½ httpclient-4.3.1.jarï¿½ï¿½httpcore-4.3.jar
      */
     @RequestMapping("/getChatContainer")
     @ResponseBody
@@ -37,10 +35,10 @@ public class TulingChat {
         HttpResponse response = HttpClients.createDefault().execute(request);*/
         String resultStr = HttpRequestTool.httpRequest(URL, "GET", null, "UTF-8");
         logger.info("resultStr = " + resultStr);
-        //200¼´ÕýÈ·µÄ·µ»ØÂë
+        //200ï¿½ï¿½ï¿½ï¿½È·ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½
         /*if(response.getStatusLine().getStatusCode()==200){
             String result = EntityUtils.toString(response.getEntity());
-            System.out.println("·µ»Ø½á¹û£º"+result);
+            System.out.println("ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½"+result);
         }*/
         TuLingResult resultData = JsonTool.getObjByJsonStr(resultStr, TuLingResult.class);
         return resultData;
@@ -51,7 +49,7 @@ public class TulingChat {
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        INFO = URLEncoder.encode("ÄãºÃ", "utf-8");
+        INFO = URLEncoder.encode("ä½ å¥½", "utf-8");
         logger.info("INFO[" + INFO + "]");
         String URL = "http://www.tuling123.com/openapi/api?key=" + KEY + "&info=" + INFO;
         String resultStr = HttpRequestTool.httpRequest(URL, "GET", null, "UTF-8");
