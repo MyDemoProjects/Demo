@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -6,55 +8,98 @@
             + path + "/";
     request.setAttribute("basePath", basePath.replace(":80/", "/"));
 %>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
     <meta charset="utf-8">
-    <title>nstSlider.js Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link type="text/css" rel="stylesheet" href="${basePath}js/jquery.nstSlider.css">
-    <script src="${basePath}js/jquery-2.1.4.js"></script>
-    <script src="${basePath}js/"
-    <script src="${basePath}js/jquery.netSlider.min.js"></script>
-    <style>
-        body {
-            min-width: 300px;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0px;
+    <base href="${basePath}">
+    <title>首页</title>
+    <script type="text/javascript" src="${basePath}staticResource/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#vidDiv").height($(window).height());
+            $("#vidDiv").width(document.documentElement.clientWidth);
+            $("#barDiv").css("left", ($(document).width() - $("#barDiv").width())/2);
+            $("#barDiv").css("top", (getClientHeight() - $("#barDiv").height())/2);
+        });
+
+        function getClientHeight() {
+            var clientHeight = 0;
+            if (document.body.clientHeight && document.documentElement.clientHeight) {
+                clientHeight = Math.min(document.body.clientHeight,
+                        document.documentElement.clientHeight);
+            } else {
+                clientHeight = Math.max(document.body.clientHeight,
+                        document.documentElement.clientHeight);
+            }
+            return clientHeight;
         }
 
+        function getMyClientHeight() {
+            return document.documentElement.clientHeight;
+        }
+
+
+        function getMyClientWidth() {
+            return document.documentElement.clientWidth;
+        }
+    </script>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .videoStyle {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+        .mask {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: .4;
+        }
+
+        #barDiv {
+            position: absolute;
+            opacity: 1;
+        }
+
+        .btnStyle {
+            height: 40px;
+            width: 100px;
+            line-height: 40px;
+            font-size: 20px;
+            margin-right: 50px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #3CC;
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #fff;
+            background-color: grey;
+            border: 1px solid #F0F;
+        }
     </style>
 </head>
-<body>
-<h1>Get started with jquery.nstSlider.js</h1>
-<!-- 2. Write markup for the slider -->
-<div class="nstSlider" data-range_min="0" data-range_max="2" data-cur_min="0" data-cur_max="1">
-    <div class="highlightPanel"></div>
-    <div class="bar"></div>
-    <div class="leftGrip"></div>
-    <div class="rightGrip"></div>
+<video id="vidDiv" src="${basePath}staticResource/video/bgVideo.mp4" autoplay loop class="videoStyle">
+    <p>暂不支持视频</p>
+</video>
+<div id="mask" class="mask">
+    <div id="barDiv">
+        <a class="btnStyle" href="${basePath}clientHome/">登&nbsp;陆</a>
+        <a class="btnStyle" href="javascript:;">注&nbsp;册</a>
+    </div>
 </div>
-<div class="leftLabel"></div>
-<div class="rightLabel"></div>
-<script>
-    $('.nstSlider').nstSlider({
-        "left_grip_selector": ".leftGrip",
-        "right_grip_selector": ".rightGrip",
-        "value_bar_selector": ".bar",
-        "highlight": {
-            "grip_class": "gripHighlighted",
-            "panel_selector": ".highlightPanel"
-        },
-        "value_changed_callback": function (cause, leftValue, rightValue) {
-            $('.leftLabel').text(leftValue);
-            $('.rightLabel').text(rightValue);
-        },
-    });
-
-    // Call methods and such...
-    var highlightMin = Math.random() * 20,
-            highlightMax = highlightMin + Math.random() * 80;
-    $('.nstSlider').nstSlider('highlight_range', highlightMin, highlightMax);
-</script>
+<body>
 </body>
 </html>
