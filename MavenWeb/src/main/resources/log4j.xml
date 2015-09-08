@@ -125,8 +125,6 @@
     </category>
 
     <root>
-        <!-- <level value="trace" /> <level value="debug" /> <level value="info" 
-            /> <level value="warn" /> <level value="error" /> <level value="fatal" /> -->
         <appender-ref ref="consoleLog"/>
         <appender-ref ref="dateLog"/>
         <appender-ref ref="fileLog"/>
