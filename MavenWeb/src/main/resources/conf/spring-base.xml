@@ -71,7 +71,7 @@
         <property name="sessionTemplate" ref="sqlSessionTemplate"></property>
     </bean>
 
-    <import resource="spring-user.xml" />
+   <!-- <import resource="spring-user.xml" />-->
     <!--================== 事务管理 ===================== -->
     <!--<bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

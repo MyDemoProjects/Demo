@@ -1,9 +1,11 @@
 package org.zzc.server.login.entity;
 
+import org.zzc.base.model.entity.BaseEntity;
+
 /**
- * 系统权限
+ * 系统权锟斤拷
  */
-public class Permissions {
+public class Permissions extends BaseEntity {
     private Integer resourceId;
 
     private String resourceName;

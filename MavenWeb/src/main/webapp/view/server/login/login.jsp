@@ -19,7 +19,28 @@
     <script type="text/javascript" src="${basePath}staticResource/js/jquery-2.1.4.js"></script>
 
     <script>
-        var submitForm = function() {
+        var submitForm = function () {
+            var sysUser = {
+                account: $("#username").val().trim(),
+                password: $("#password").val()
+            }
+            $.ajax({
+                type: 'post',
+                url: '${basePath}clientHome/login',
+                data: sysUser,
+                cache: false,
+                dataType: 'json',
+                success: function (result) {
+                    if(result.id == 0) {
+                        alert(result.msg);
+                    } else if(result.id == 1) {
+                       /* window.location.href = "${basePath}clientManager/index";*/
+                        $("#myForm").submit();
+                    } else {
+                        alert("没有返回值啊");
+                    }
+                }
+            });
 
         }
 
@@ -28,14 +49,14 @@
 <body>
 <div class="container">
     <section id="content">
-        <form action="${basePath}">
+        <form action="${basePath}clientManager/index" method="post" id="myForm">
             <h1>Login Form</h1>
 
             <div>
-                <input type="text" placeholder="您的邮箱" required="" id="username"/>
+                <input type="text" placeholder="您的邮箱" required="" id="username" name="account"/>
             </div>
             <div>
-                <input type="password" placeholder="您的密码" required="" id="password"/>
+                <input type="password" placeholder="您的密码" required="" id="password" name="password"/>
             </div>
             <div>
                 <input type="button" value="Log in" onclick="submitForm();"/>

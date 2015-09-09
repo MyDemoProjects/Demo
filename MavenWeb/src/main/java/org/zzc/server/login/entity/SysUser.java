@@ -1,36 +1,22 @@
 package org.zzc.server.login.entity;
 
-import java.sql.Date;
+import org.zzc.base.model.entity.BaseEntity;
 
 /**
- * 用户管理
+ * system manager account
  */
-public class SysUser {
-    private Integer id;
-
+public class SysUser extends BaseEntity {
     private String name;
 
     private String account;
 
     private String password;
 
-    private Integer businessid;
+    private Integer businessId;
 
     private String status;
 
     private Integer roleId;
-
-    private Date createtime;
-
-    private Date updatetime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -56,12 +42,12 @@ public class SysUser {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getBusinessid() {
-        return businessid;
+    public Integer getBusinessId() {
+        return businessId;
     }
 
-    public void setBusinessid(Integer businessid) {
-        this.businessid = businessid;
+    public void setBusinessId(Integer businessId) {
+        this.businessId = businessId;
     }
 
     public String getStatus() {
@@ -78,21 +64,5 @@ public class SysUser {
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
-
-    public Date getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
     }
 }

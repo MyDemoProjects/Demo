@@ -1,11 +1,13 @@
 package org.zzc.server.login.entity;
 
+import org.zzc.base.model.entity.BaseEntity;
+
 import java.sql.Date;
 
 /**
- * ½ÇÉ«¹ÜÀí
+ * ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
  */
-public class Role {
+public class Role extends BaseEntity {
     private Integer roleId;
 
     private String roleName;
@@ -17,8 +19,6 @@ public class Role {
     private Date addTime;
 
     private Integer addUserId;
-
-    private Date updateTime;
 
     private Integer updateUserId;
 
@@ -72,14 +72,6 @@ public class Role {
 
     public void setAddUserId(Integer addUserId) {
         this.addUserId = addUserId;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     public Integer getUpdateUserId() {

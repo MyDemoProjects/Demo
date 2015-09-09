@@ -1,19 +1,12 @@
 package org.zzc.server.login.entity;
 
-public class RolePermissions {
-    private Integer id;
+import org.zzc.base.model.entity.BaseEntity;
+
+public class RolePermissions extends BaseEntity {
 
     private Integer roleId;
 
     private Integer resourceId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getRoleId() {
         return roleId;

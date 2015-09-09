@@ -1,6 +1,7 @@
 package org.zzc.base.model.dao;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.zzc.base.model.entity.BaseEntity;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class BaseDao<E extends BaseEntity> {
     /** log object */
     protected Logger logger = Logger.getLogger(this.getClass());
     /** baseDaoSupport Class */
+    @Autowired
     protected BaseDaoSupport baseDaoSupport;
 
     /**

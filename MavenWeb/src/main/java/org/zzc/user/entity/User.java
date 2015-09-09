@@ -6,7 +6,6 @@ import org.zzc.base.model.entity.BaseEntity;
  * 用户信息
  */
 public class User extends BaseEntity {
-    private Integer id;
 
     private String code;
 
@@ -19,14 +18,6 @@ public class User extends BaseEntity {
     private String sex;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getCode() {
         return code;

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zzc.server.login.entity.SysUser">
+  <!-- 查询记录总行数 -->
+  <select id="getRecordListCount" parameterType="org.zzc.server.login.entity.SysUser"
+          resultType="int">
+    <![CDATA[ select count(*) from user ]]>
+  </select>
+  <!-- 根据id得到记录 -->
+  <select id="getRecordById" parameterType="org.zzc.server.login.entity.SysUser"
+          resultType="org.zzc.server.login.entity.SysUser">
+    <![CDATA[ select * from sysuser]]>
+    <where>
+      <if test="id != null"><![CDATA[ and id =#{id} ]]></if>
+      <if test="name != null"><![CDATA[ and name =#{name} ]]></if>
+      <if test="account != null"><![CDATA[ and account =#{account} ]]></if>
+      <if test="password != null"><![CDATA[ and password =#{password} ]]></if>
+      <if test="businessId != null"><![CDATA[ and businessId =#{businessId} ]]></if>
+      <if test="roleId != null"><![CDATA[ and roleId =#{roleId} ]]></if>
+      <if test="status != null"><![CDATA[ and status =#{status} ]]></if>
+    </where>
+  </select>
+  <!-- 得到记录列表 -->
+  <select id="getRecordList" parameterType="org.zzc.server.login.entity.SysUser"
+          resultType="org.zzc.server.login.entity.SysUser">
+    <![CDATA[ select * from userInfo ]]>
+    <if test="splitPage.isSplitPage == true">
+      limit #{splitPage.startRow}, #{splitPage.pageSize}
+    </if>
+  </select>
+  <!-- 新增记录 -->
+  <insert id="addRecord" parameterType="org.zzc.server.login.entity.SysUser"
+          useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    <![CDATA[
+			insert into userInfo (code,name,telNo,openId,nickName,userImg,sex,birthday,createrId,createrName,createrTime,modTime,status) 
+			values(#{code},#{name},#{telNo},#{openId},#{nickName},#{userImg},#{sex},#{birthday},#{createrId},#{createrName},#{createrTime},#{modTime},#{status}) 
+		]]>
+  </insert>
+  <!-- 修改记录 -->
+  <update id="updateRecord" parameterType="org.zzc.server.login.entity.SysUser">
+    <![CDATA[
+			UPDATE userInfo SET code = #{code},name = #{name}, telNo = #{telNo}, openId = #{openId}, nickName = #{nickName}, 
+				userImg = #{userImg}, sex = #{sex}, birthday = #{birthday}, modId = #{modId},modName = #{modName}, 
+				modTime = #{modTime}, status = #{status} 
+			WHERE id=#{id} 
+		]]>
+  </update>
+  <!-- 删除记录 -->
+  <!-- <delete id="deleteRecord" parameterType="org.zzc.user.entity.User">
+      <![CDATA[ delete from userInfo WHERE id=#{id}]]> </delete> -->
+</mapper> 
