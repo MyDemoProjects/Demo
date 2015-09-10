@@ -69,10 +69,10 @@
     </style>
     <script src="${basePath}js/jquery-2.1.4.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-           window.setTimeout(function(){
-               createDivAppend(null, "get", getString("亲,T-800竭诚为您服务~", false), $("#result"));
-           }, 1000);
+        $(document).ready(function () {
+            window.setTimeout(function () {
+                createDivAppend(null, "get", getString("亲,T-800竭诚为您服务~", false), $("#result"));
+            }, 1000);
         });
         function doSubmit() {
             $("#subBtn").attr('disabled', "true");
@@ -131,15 +131,13 @@
 <body>
 <div id="container" class="container">
     <h2 style="margin-top: 40px; text-align: center;">智能聊天机器人</h2>
-    <div style="margin: 0 auto;text-align: center;">
-        <input type="range" max="2" min="0" step="1" value="0" style="width: 100%;border: none;">
-    </div>
+
     <div id="result" class="msgWindow">
     </div>
-    <div style="width: 90%;margin: 0px auto;text-align: right;margin-top: 1px;">
+    <div style="width: 95%;margin: 10px auto;text-align: right;">
         <textarea rows="3" placeholder="请输入内容" name="info" id="info" style="width:100%;color:#747474;"
                   onkeydown="return  doKeyDown(event);"></textarea>
-        <br>
+        <div style="height: 10px;clear: both;">&nbsp;</div>
         <input id="subBtn" type="button" onclick="doSubmit()" value="发送" onkeydown="return  doKeyDown(event);">
     </div>
 </div>
