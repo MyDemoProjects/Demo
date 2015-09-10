@@ -31,29 +31,22 @@ public class LoginController {
     @ResponseBody
     public MsgInfo login(SysUser sysUser) {
         MsgInfo msgInfo = new MsgInfo();
-        SysUser queryParam = new SysUser(), resultInfo;
-        queryParam.setAccount(sysUser.getAccount());
-        resultInfo = sysUserService.getRecordById(queryParam);
+        sysUser.setStatus("1");
+        SysUser paramInfo = new SysUser();
+        paramInfo.setAccount(sysUser.getAccount());
+        SysUser resultInfo = sysUserService.getRecordById(paramInfo);
         if (resultInfo == null) {
             msgInfo.setMsg("账户不存在");
             return msgInfo;
-        }
-        resultInfo = null;
-        queryParam.setPassword(sysUser.getPassword());
-        resultInfo = sysUserService.getRecordById(queryParam);
-        if (resultInfo == null) {
+        } else if (!sysUser.getPassword().equals(resultInfo.getPassword())) {
             msgInfo.setMsg("密码不正确");
             return msgInfo;
+        } else if (!sysUser.getStatus().equals(resultInfo.getStatus())) {
+            msgInfo.setMsg("账号异常,请联系客服");
+        } else {
+            msgInfo.setId(1);
+            msgInfo.setMsg("登录成功");
         }
-        resultInfo = null;
-        queryParam.setStatus("1");
-        resultInfo = sysUserService.getRecordById(queryParam);
-        if (resultInfo == null) {
-            msgInfo.setMsg("账号状态不正常,请联系客服");
-            return msgInfo;
-        }
-        msgInfo.setId(1);
-        msgInfo.setMsg("登录成功");
         return msgInfo;
     }
 }

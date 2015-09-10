@@ -45,6 +45,7 @@
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/staticResource/*</url-pattern>
+        <url-pattern>*.html</url-pattern>
     </servlet-mapping>
     <!-- ==================== springmvc 配置===================== -->
     <servlet>
@@ -103,6 +104,6 @@
 
     <!-- ==================== 欢迎页面===================== -->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 </web-app>
