@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zzc.base.controller.BaseController;
 import org.zzc.server.login.entity.SysUser;
 import org.zzc.server.login.service.iservice.ISysUserService;
 
@@ -14,7 +15,7 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("clientManager")
-public class Home {
+public class Home extends BaseController {
 
     @Resource
     private ISysUserService sysUserService;
@@ -22,6 +23,7 @@ public class Home {
     /*@ModelAttribute("sysUser")*/
     @RequestMapping({"/", "/index"})
     public String home(SysUser sysUser, ModelMap modelMap) {
+        logger.info("跳转到后台管理...");
         sysUser = sysUserService.getRecordById(sysUser);
        /* modelMap.addAttribute("sysUser", sysUser);*/
         modelMap.put("sysUser", sysUser);

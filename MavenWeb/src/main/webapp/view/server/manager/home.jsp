@@ -1,13 +1,24 @@
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+    request.setAttribute("basePath", basePath.replace(":80/", "/"));
+%>
+<!doctype html>
 <html>
 <head id="Head1">
+    <base href="${basePath}">
     <title>梦幻空间管理系统</title>
-    <link rel="stylesheet" type="text/css" href="./../../../staticResource/css/default.css"/>
-    <link  rel="stylesheet" type="text/css" href="./../../../staticResource/easyui/themes/default/easyui.css"/>
-    <link rel="stylesheet" type="text/css" href="./../../../staticResource/easyui/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="${basePath}/staticResource/css/default.css"/>
+    <link  rel="stylesheet" type="text/css" href="${basePath}/staticResource/easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="${basePath}/staticResource/easyui/themes/icon.css"/>
 
-    <script type="text/javascript" src="./../../../staticResource/js/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="./../../../staticResource/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${basePath}/staticResource/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="${basePath}/staticResource/easyui/jquery.easyui.min.js"></script>
     <!--<script type="text/javascript" src="./../staticResource/js/outlook2.js"></script>-->
     <script type="text/javascript">
         $(function () {
@@ -30,7 +41,7 @@
       <a href="#" id="loginOut">安全退出</a>
   </span>
   <span style="padding-left:10px; font-size: 16px; ">
-      <img style="border-radius: 50%;" src="./../../../staticResource/image/common/logo.png" width="20" height="20" align="absmiddle"/>
+      <img style="border-radius: 50%;" src="${basePath}staticResource/image/common/logo.png" width="20" height="20" align="absmiddle"/>
   </span>
 </div>
 <div region="west" split="true" title="导航菜单" style="width:200px;" id="west">

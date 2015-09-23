@@ -15,6 +15,8 @@
     <appender name="fileLog" class="org.apache.log4j.RollingFileAppender">
         <param name="threshold" value="error"/>
         <param name="file" value="${catalina.home}/log/fileLog.log"/>
+        <!-- <param name="maxFileSize" value="1M"/>
+         <param name="maxBackupIndex" value="5"/>-->
         <param name="append" value="true"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[%-5p][%d{yyyy-MM-dd HH:mm:ss,SSS}][%c] :%m%n"/>
@@ -27,7 +29,7 @@
         <param name="file" value="${catalina.home}/log/dateLog.log"/>
         <param name="append" value="true"/>
         <param name="datePattern" value="'.'yyy-MM-dd"/>
-        <param name="datePattern" value="'.'yyy-MM-dd-HH"/>
+        <!-- <param name="datePattern" value="'.'yyy-MM-dd-HH"/> -->
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="[%-5p][%d{yyyy-MM-dd HH:mm:ss,SSS}][%c] :%m%n"/>
         </layout>
@@ -35,20 +37,24 @@
 
 
     <!-- HTML形式的错误日志 -->
-    <!--<appender name="htmlLog" class="org.apache.log4j.RollingFileAppender">
+    <appender name="htmlLog" class="org.apache.log4j.RollingFileAppender">
         <param name="threshold" value="error"/>
         <param name="file" value="${catalina.home}/log/htmlLog.html"/>
+        <!-- <param name="maxFileSize" value="1M"/>
+         <param name="maxBackupIndex" value="5"/>-->
         <param name="append" value="true"/>
         <layout class="org.apache.log4j.HTMLLayout"/>
-    </appender>-->
+    </appender>
 
     <!-- XML形式错误日志 -->
-    <!--<appender name="xmlLog" class="org.apache.log4j.RollingFileAppender">
+    <appender name="xmlLog" class="org.apache.log4j.RollingFileAppender">
         <param name="threshold" value="error"/>
         <param name="file" value="${catalina.home}/log/xmlLog.xml"/>
+        <!--<param name="maxFileSize" value="1M"/>
+        <param name="maxBackupIndex" value="5"/>-->
         <param name="append" value="true"/>
         <layout class="org.apache.log4j.xml.XMLLayout"/>
-    </appender>-->
+    </appender>
     <!-- 打印sql -->
 
     <!-- 下面是打印mybatis语句的配置-->
@@ -67,11 +73,42 @@
     <logger name="java.sql.ResultSet" additivity="false">
         <level value="DEBUG"/>
     </logger>
+    <!-- 邮件日志 -->
+    <!--  <appender name="mail.MAIL" class="org.apache.log4j.net.SMTPAppender">
+          <param name="threshold" value="debug"/>
+          <param name="BufferSize" value="10"/>
+          <param name="From" value="openwolf@163.com"/>
+          <param name="SMTPHost" value="www.baidu.com"/>
+          <param name="Subject" value="openwolf-log4j-Message"/>
+          <param name="To" value="openwolf@163.com"/>
+          <layout class="org.apache.log4j.PatternLayout">
+              <param name="ConversionPattern" value="[%-5p][%d{yyyy-MM-dd HH:mm:ss,SSS}][%c] :%m%n"/>
+          </layout>
+      </appender>-->
+    <!-- SOCKET日志 -->
+    <!--<appender name="remote.CHAINSAW" class="org.apache.log4j.net.SocketAppender">
+        <param name="threshold" value="fatal"/>
+        <param name="remoteHost" value="localhost"/>
+        <param name="port" value="18845"/>
+        <param name="locationInfo" value="true"/>
+    </appender>-->
 
     <category name="org.zzc" additivity="true">
         <priority value="debug"/>
+        <appender-ref ref="consoleLog"/>
         <appender-ref ref="dateLog"/>
     </category>
+
+    <!--<category name="org.zzc" additivity="true">
+        <priority value="debug"/>
+        <appender-ref ref="consoleLog"/>
+        <appender-ref ref="dateLog"/>
+    </category>-->
+    <!--<category name="org.zzc" additivity="true">
+        <priority value="warn"/>
+        <appender-ref ref="consoleLog"/>
+        &lt;!&ndash; <appender-ref ref="file.text.DATE_FILE"/> &ndash;&gt;
+    </category>-->
     <category name="org.springframework" additivity="false">
         <priority value="ERROR"/>
         <appender-ref ref="consoleLog"/>
@@ -88,7 +125,6 @@
     </category>
 
     <root>
-        <level value="DEBUG"/>
         <appender-ref ref="consoleLog"/>
         <appender-ref ref="dateLog"/>
         <appender-ref ref="fileLog"/>
