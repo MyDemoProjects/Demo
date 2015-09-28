@@ -2,33 +2,45 @@ package org.zzc.server.manager.entity;
 
 import org.zzc.base.model.entity.BaseEntity;
 
-public class Menu extends BaseEntity{
-    private String menuname;
+import java.util.List;
 
-    private String menuurl;
+public class Menu extends BaseEntity{
+    private String menuName;
+
+    private String menuUrl;
 
     private Integer degree;
 
-    private Integer submenucount;
+    private Integer subMenuCount;
 
-    private Integer parentid;
+    private Integer parentId;
 
     private Integer status;
 
-    public String getMenuname() {
-        return menuname;
+    private List<Menu> subMenus;
+
+    public List<Menu> getSubMenus() {
+        return subMenus;
     }
 
-    public void setMenuname(String menuname) {
-        this.menuname = menuname == null ? null : menuname.trim();
+    public void setSubMenus(List<Menu> subMenus) {
+        this.subMenus = subMenus;
     }
 
-    public String getMenuurl() {
-        return menuurl;
+    public String getMenuName() {
+        return menuName;
     }
 
-    public void setMenuurl(String menuurl) {
-        this.menuurl = menuurl == null ? null : menuurl.trim();
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public String getMenuUrl() {
+        return menuUrl;
+    }
+
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl;
     }
 
     public Integer getDegree() {
@@ -39,20 +51,20 @@ public class Menu extends BaseEntity{
         this.degree = degree;
     }
 
-    public Integer getSubmenucount() {
-        return submenucount;
+    public Integer getSubMenuCount() {
+        return subMenuCount;
     }
 
-    public void setSubmenucount(Integer submenucount) {
-        this.submenucount = submenucount;
+    public void setSubMenuCount(Integer subMenuCount) {
+        this.subMenuCount = subMenuCount;
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public Integer getStatus() {
