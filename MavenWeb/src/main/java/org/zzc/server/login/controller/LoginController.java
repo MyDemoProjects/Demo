@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.zzc.base.controller.BaseController;
 import org.zzc.base.model.entity.MsgInfo;
 import org.zzc.server.login.entity.SysUser;
 import org.zzc.server.login.service.iservice.ISysUserService;
@@ -17,19 +18,21 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("/clientHome")
-public class LoginController {
+public class LoginController extends BaseController {
 
     @Resource(name = "sysUserService")
     private ISysUserService sysUserService;
 
     @RequestMapping({"/", "/home"})
     public String gotoLogin() {
+        logger.info("正在跳转到登录页面...");
         return "server/login/login";
     }
 
     @RequestMapping("/login")
     @ResponseBody
     public MsgInfo login(SysUser sysUser) {
+        logger.info("登录验证...");
         MsgInfo msgInfo = new MsgInfo();
         sysUser.setStatus("1");
         SysUser paramInfo = new SysUser();

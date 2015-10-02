@@ -1,9 +1,19 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+    request.setAttribute("basePath", basePath.replace(":80/", "/"));
+%>
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <base href="${basePath}">
     <title>首页</title>
-    <script type="text/javascript" src="./staticResource/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="${basePath}staticResource/js/jquery-2.1.4.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $("#vidDiv").height($(window).height());
@@ -80,12 +90,12 @@
         }
     </style>
 </head>
-<video id="vidDiv" src="./staticResource/video/bgVideo.mp4" autoplay loop class="videoStyle">
+<video id="vidDiv" src="${basePath}staticResource/video/bgVideo.mp4" autoplay loop class="videoStyle">
     <p>暂不支持视频</p>
 </video>
 <div id="mask" class="mask">
     <div id="barDiv">
-        <a class="btnStyle" href="./clientHome/home">登&nbsp;陆</a>
+        <a class="btnStyle" href="${basePath}clientHome/">登&nbsp;陆</a>
         <a class="btnStyle" href="javascript:;">注&nbsp;册</a>
     </div>
 </div>

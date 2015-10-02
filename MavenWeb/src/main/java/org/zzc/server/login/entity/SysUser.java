@@ -1,6 +1,9 @@
 package org.zzc.server.login.entity;
 
 import org.zzc.base.model.entity.BaseEntity;
+import org.zzc.server.manager.entity.Menu;
+
+import java.util.List;
 
 /**
  * system manager account
@@ -17,6 +20,16 @@ public class SysUser extends BaseEntity {
     private String status;
 
     private Integer roleId;
+
+    private List<Menu> menus;
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
 
     public String getName() {
         return name;

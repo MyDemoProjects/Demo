@@ -1,11 +1,22 @@
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+    request.setAttribute("basePath", basePath.replace(":80/", "/"));
+%>
+<!doctype html>
+<html>
 <head>
-    <meta charset="utf-8">
+    <base href="${basePath}">
     <title>登录</title>
-    <link rel="stylesheet" type="text/css" href="./../../../staticResource/css/home.css"/>
-    <link rel="stylesheet" type="text/css" href="./../../../staticResource/css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="${basePath}staticResource/css/home.css"/>
+    <link rel="stylesheet" type="text/css" href="${basePath}staticResource/css/login.css"/>
 
-    <script type="text/javascript" src="./../../../staticResource/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="${basePath}staticResource/js/jquery-2.1.4.js"></script>
 
     <script>
         var submitForm = function () {
@@ -15,7 +26,7 @@
             }
             $.ajax({
                 type: 'post',
-                url: './../../../clientHome/login',
+                url: '${basePath}clientHome/login',
                 data: sysUser,
                 cache: false,
                 dataType: 'json',
@@ -26,8 +37,7 @@
                             $("#resultInfo").html("");
                         }, 2500);
                     } else if(result.id == 1) {
-                       // $("#myForm").submit();
-                        window.location.href = "../manager/home.html";
+                       $("#myForm").submit();
                     } else {
                         $("#resultInfo").html(result.msg);
                         window.setTimeout(function() {
@@ -44,7 +54,7 @@
 <body>
 <div class="container">
     <section id="content">
-        <form action="./../../../clientManager/index" method="post" id="myForm">
+        <form action="${basePath}clientManager/index" method="post" id="myForm">
             <h1>Login Form</h1>
 
             <div>
