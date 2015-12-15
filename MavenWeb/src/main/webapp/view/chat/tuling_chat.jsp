@@ -8,12 +8,17 @@
             + path + "/";
     request.setAttribute("basePath", basePath.replace(":80/", "/"));
 %>
+<!doctype html>
 <html>
 <head>
     <title>聊天</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <%-- <script src="../../js/jquery-2.1.4.js"></script>--%>
+    <script src="${basePath}staticResource/js/jquery-2.1.4.js"></script>
     <style>
+        html, body{
+            width: 100%;
+            height:100%;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -37,6 +42,7 @@
             border: 1px solid #ccc;
             overflow-y: scroll;
             background-color: #fff;
+            box-sizing: border-box;
         }
 
         .get {
@@ -67,9 +73,11 @@
             border-radius: 5px;
         }
     </style>
-    <script src="${basePath}js/jquery-2.1.4.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $("#result").outerHeight($("#container").innerHeight() - $("#title").outerHeight() - $("#inputDiv").outerHeight() - 80);
+            console.log($("#container").innerHeight(), $("#title").outerHeight(), $("#inputDiv").outerHeight());
             window.setTimeout(function () {
                 createDivAppend(null, "get", getString("亲,T-800竭诚为您服务~", false), $("#result"));
             }, 1000);
@@ -130,15 +138,13 @@
 </head>
 <body>
 <div id="container" class="container">
-    <h2 style="margin-top: 40px; text-align: center;">智能聊天机器人</h2>
+    <h2 id="title" style="margin-top: 40px; text-align: center;">智能聊天机器人</h2>
 
     <div id="result" class="msgWindow">
     </div>
-    <div style="width: 95%;margin: 10px auto;text-align: right;">
-        <textarea rows="3" placeholder="请输入内容" name="info" id="info" style="width:100%;color:#747474;"
-                  onkeydown="return  doKeyDown(event);"></textarea>
-        <div style="height: 10px;clear: both;">&nbsp;</div>
-        <input id="subBtn" type="button" onclick="doSubmit()" value="发送" onkeydown="return  doKeyDown(event);">
+    <div id="inputDiv" style="width: 100%;margin: 10px auto;text-align: right;">
+        <input type="text" placeholder="请输入内容" name="info" id="info" style="width:60%;color:#747474;">
+        <input id="subBtn" type="button" onclick="doSubmit()" value="发送" onkeydown="return  doKeyDown(event);" style="width:35%;color:#747474;">
     </div>
 </div>
 </body>
