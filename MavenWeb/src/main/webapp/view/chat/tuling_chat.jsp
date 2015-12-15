@@ -34,7 +34,7 @@
         }
 
         .msgWindow {
-            width: 90%;
+            width: 100%;
             margin: 0px auto;
             margin-top: 20px;
             padding: 5px;
@@ -143,8 +143,8 @@
     <div id="result" class="msgWindow">
     </div>
     <div id="inputDiv" style="width: 100%;margin: 10px auto;text-align: right;">
-        <input type="text" placeholder="请输入内容" name="info" id="info" style="width:60%;color:#747474;">
-        <input id="subBtn" type="button" onclick="doSubmit()" value="发送" onkeydown="return  doKeyDown(event);" style="width:35%;color:#747474;">
+        <input type="text" placeholder="请输入内容" name="info" id="info" style="width:60%;color:#747474;line-height: 20px;">
+        <input id="subBtn" type="button" onclick="doSubmit()" value="发送" onkeydown="return  doKeyDown(event);" style="width:35%;color:#747474;line-height: 20px;">
     </div>
 </div>
 </body>
